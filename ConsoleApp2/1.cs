@@ -1,8 +1,8 @@
-﻿zadanie3();
+﻿zadanie5();
 async void zadanie1()
 {
     string text = Console.ReadLine();
-    using (StreamWriter sw = new StreamWriter(@"C:\Users\Kolpa\source\repos\ConsoleApp2\ConsoleApp2\Letter_To_Santa_Claus.txt", false))
+    using (StreamWriter sw = new StreamWriter(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\Letter_To_Santa_Claus.txt", false))
     {
         await sw.WriteLineAsync(text);
     } 
@@ -11,7 +11,7 @@ void zadanie2()
 {
     int count = 0;
     string res;
-    using (StreamReader sr = new StreamReader(@"C:\\Users\\Kolpa\\source\\repos\\ConsoleApp2\\ConsoleApp2\\Text.txt"))
+    using (StreamReader sr = new StreamReader(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\Text.txt"))
     {
         res = sr.ReadToEnd();
     }
@@ -29,14 +29,14 @@ void zadanie3()
 {
     string res;
     List<int> numbers = new List<int> { };
-    using (StreamWriter sw = new StreamWriter(@"C:\Users\Kolpa\source\repos\ConsoleApp2\ConsoleApp2\TEXT1.txt", false))
+    using (StreamWriter sw = new StreamWriter(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\TEXT1.txt", false))
     {
         for (int i = 0; i < 10; i++)
         {
             sw.WriteLine(Random.Shared.Next(0, 1000));
         }
     }
-    using (StreamReader sr = new StreamReader(@"C:\Users\Kolpa\source\repos\ConsoleApp2\ConsoleApp2\TEXT1.txt"))
+    using (StreamReader sr = new StreamReader(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\TEXT1.txt"))
     {
         res = sr.ReadToEnd();
         List<string> nums = new List<string>(res.Replace("\r\n", " ").Split(' '));
@@ -49,11 +49,53 @@ void zadanie3()
             }
         }
     }
-    using (StreamWriter sw = new StreamWriter(@"C:\Users\Kolpa\source\repos\ConsoleApp2\ConsoleApp2\TEXT1_1.txt", false))
+    using (StreamWriter sw = new StreamWriter(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\TEXT1_1.txt", false))
     {
         foreach (int s in numbers)
         {
                 sw.WriteLine(s);
+        }
+    }
+}
+
+void zadanie4()
+{
+    string[] res = new string[3];
+    int num = Convert.ToInt32(Console.ReadLine());
+    using (StreamReader sr = new StreamReader(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\fio_stud.txt"))
+    {
+        int len = 0;
+        len = File.ReadAllLines(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\fio_stud.txt").Count();
+        if (num > len)
+        {
+            Console.WriteLine($"Студента с номером {num} нет в списке");
+        }
+        else
+        {
+            for (int i = 0; i < num; i++)
+            {
+                res = sr.ReadLine().Split(" ");
+            }
+            Console.WriteLine(res[0]);
+        }
+    }
+}
+
+void zadanie5()
+{
+    string choice = Console.ReadLine();
+    if (choice == "Reader")
+    {
+        using (StreamReader sr = new StreamReader(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\zadanie5.txt"))
+        {
+            Console.WriteLine(sr.ReadToEnd());
+        }
+    }
+    else if (choice == "Writer")
+    {
+        using (StreamWriter sw = new StreamWriter(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\zadanie5.txt", true))
+        {
+            sw.WriteLine("\nИльназ Алмазович лучший!!! Чест слово, я прям кайфую на его па-рах!!! Мы вас любим!!!");
         }
     }
 }
