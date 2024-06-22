@@ -7,6 +7,7 @@ async void zadanie1()
         await sw.WriteLineAsync(text);
     } 
 }
+
 void zadanie2()
 {
     int count = 0;
@@ -86,20 +87,34 @@ void zadanie5()
     string choice = Console.ReadLine();
     if (choice == "Random")
     {
-        int ran = Random.Shared.Next(0, 2);
+        Random rn = new Random();
+        int ran = rn.Next(0, 2);
         if (ran == 0)
         {
-            choice = "Reader";
+            using (StreamReader sr = new StreamReader(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\zadanie5.txt"))
+            {
+                if (string.IsNullOrEmpty(sr.ReadToEnd()))
+                {
+                    Console.WriteLine("Файл пустой!!!");
+                }
+                else
+                {
+                    Console.WriteLine(sr.ReadToEnd());
+                }
+            }
         }
         else
         {
-            choice = "Writer";
+            using (StreamWriter sw = new StreamWriter(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\zadanie5.txt", true))
+            {
+                sw.WriteLine("Ильназ Алмазович лучший!!! Чест слово, я прям кайфую на его па-рах!!! Мы вас любим!!!");
+            }
         }
         Console.WriteLine(choice);
     }
     if (choice == "Reader")
     {
-        using (StreamReader sr = new StreamReader(@"C:\Users\Kolpa\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\zadanie5.txt"))
+        using (StreamReader sr = new StreamReader(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\zadanie5.txt"))
         {
             if (string.IsNullOrEmpty(sr.ReadToEnd()))
             {
@@ -113,9 +128,9 @@ void zadanie5()
     }
     else if (choice == "Writer")
     {
-        using (StreamWriter sw = new StreamWriter(@"C:\Users\Kolpa\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\zadanie5.txt", true))
+        using (StreamWriter sw = new StreamWriter(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\zadanie5.txt", true))
         {
-            sw.WriteLine("\nИльназ Алмазович лучший!!! Чест слово, я прям кайфую на его па-рах!!! Мы вас любим!!!");
+            sw.WriteLine("Ильназ Алмазович лучший!!! Чест слово, я прям кайфую на его па-рах!!! Мы вас любим!!!");
         }
     }
 }
