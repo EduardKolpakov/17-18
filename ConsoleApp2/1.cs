@@ -84,16 +84,36 @@ void zadanie4()
 void zadanie5()
 {
     string choice = Console.ReadLine();
+    if (choice == "Random")
+    {
+        int ran = Random.Shared.Next(0, 2);
+        if (ran == 0)
+        {
+            choice = "Reader";
+        }
+        else
+        {
+            choice = "Writer";
+        }
+        Console.WriteLine(choice);
+    }
     if (choice == "Reader")
     {
-        using (StreamReader sr = new StreamReader(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\zadanie5.txt"))
+        using (StreamReader sr = new StreamReader(@"C:\Users\Kolpa\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\zadanie5.txt"))
         {
-            Console.WriteLine(sr.ReadToEnd());
+            if (string.IsNullOrEmpty(sr.ReadToEnd()))
+            {
+                Console.WriteLine("Файл пустой!!!");
+            }
+            else
+            {
+                Console.WriteLine(sr.ReadToEnd());
+            }
         }
     }
     else if (choice == "Writer")
     {
-        using (StreamWriter sw = new StreamWriter(@"C:\Users\202215\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\zadanie5.txt", true))
+        using (StreamWriter sw = new StreamWriter(@"C:\Users\Kolpa\Source\Repos\EduardKolpakov\17-18\ConsoleApp2\zadanie5.txt", true))
         {
             sw.WriteLine("\nИльназ Алмазович лучший!!! Чест слово, я прям кайфую на его па-рах!!! Мы вас любим!!!");
         }
